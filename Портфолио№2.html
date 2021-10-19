@@ -1,0 +1,1460 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Portfolio №2</title>
+
+	<link rel="stylesheet" href="normalize.css">
+	<link rel="stylesheet" href="Портфолио№2.css">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+	<style>
+		@font-face {
+			font-family: "Bebas Neue";
+			src: local("BebasNeueRegular"), url("./fonts/BebasNeueRegular.woff2") format("woff2"),
+				url("./fonts/BebasNeueRegular.woff") format("woff");
+			font-weight: normal;
+			font-style: normal;
+			font-display: swap;
+		}
+
+
+		* {
+			font-family: 'Roboto', sans-serif;
+			box-sizing: border-box;
+		}
+
+		* li {
+			list-style: none;
+		}
+
+		* a {
+			text-decoration: none;
+		}
+
+		.header {
+
+			background-color: #635854;
+			border-bottom: 5px solid #3596F5;
+			padding-left: 5%;
+			padding-right: 5%;
+		}
+
+
+		.navbar-expand-lg {
+			padding: 0 !important;
+		}
+
+		nav .container-fluid {
+			margin-top: 0 !important;
+			margin-bottom: 0;
+		}
+
+
+		.nav-item {
+			margin: 0% 2% 0% 2%;
+		}
+
+		.nav-item:hover {
+			background-color: #3596F5;
+		}
+
+		.active {
+			background-color: #3596F5;
+			height: 120% !important;
+		}
+
+		.nav-item .nav-link {
+			font-family: Roboto, sans-serif;
+			font-style: normal;
+			font-weight: normal;
+			font-size: 16px;
+			line-height: 19px;
+			text-align: center;
+
+			color: #FFFFFF;
+		}
+
+
+		.nav-item .nav-link:hover {
+			color: white;
+		}
+
+		.navbar-contacts {
+			color: white;
+			font-family: Roboto;
+			font-style: normal;
+			font-weight: normal;
+			font-size: 16px;
+			line-height: 19px;
+			text-align: center;
+		}
+
+
+		.navbar-text a {
+			display: block;
+			text-decoration: none;
+			color: white;
+		}
+
+		.navbar-phone {
+			display: block;
+			text-decoration: none;
+			color: white;
+		}
+
+
+		.navbar-toggler {
+			margin: 10px 0px;
+			float: right;
+			color: white !important;
+			border: 1px solid white !important;
+		}
+
+
+
+
+
+
+		.main {
+			margin-top: 54px;
+			display: flex;
+		}
+
+		.main-image {
+			margin-left: 81px;
+			float: left;
+		}
+
+		.home-image path {
+			opacity: 0;
+			cursor: pointer;
+		}
+
+		.home-image path:hover {
+			opacity: 0.75;
+
+		}
+
+		.main-info {
+			float: right;
+			flex-grow: 1;
+			font-weight: 600;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: space-between;
+		}
+
+
+		@media (max-width: 576px) {
+			.main-image {
+				margin-left: 0;
+			}
+		}
+
+		.counter-group {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+
+		}
+
+		.counter-button {
+			cursor: pointer;
+			background-color: white;
+			border: none;
+
+		}
+
+		.main-info button.btn {
+			background: #3596F5;
+			border: none;
+			padding: 16px 36px !important;
+			border-radius: 6px !important;
+		}
+
+		.main-title {
+			font-family: "Bebas Neue", sans-serif;
+			font-size: 37px;
+			line-height: 37px;
+			color: #635854;
+			margin: 0;
+		}
+
+		.counter {
+			font-family: "Bebas Neue", sans-serif;
+			font-size: 78px;
+			color: #635854;
+			font-weight: 500;
+		}
+
+
+
+		.modall {
+			position: fixed;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			background-color: rgba(0, 0, 0, 0.8);
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			opacity: 0;
+			transform: scale(0);
+			transition: opacity 0.2s;
+			overflow-x: auto;
+		}
+
+
+		.flat path {
+			opacity: 0;
+		}
+
+		.flat path:hover {
+			opacity: 0.75;
+		}
+
+		.is-open {
+			opacity: 1;
+			transform: scale(1);
+		}
+
+
+		.modall-dialog {
+			position: relative;
+			max-width: 1000px;
+			height: auto;
+
+			background-color: white;
+			display: flex;
+
+			flex-grow: 1;
+
+			opacity: 0;
+			transform: translateY(-10%);
+			transition: transform 0.2s, opacity 0.2s;
+			transition-delay: 0.2s;
+		}
+
+		.is-open>.modall-dialog {
+			opacity: 1;
+			transform: translateY(0);
+		}
+
+
+
+		.modall-image {
+			background-color: #ebebeb;
+			width: 60%;
+
+		}
+
+
+
+
+
+
+		.modall-info {
+			width: 40%;
+			padding: 50px 46px;
+		}
+
+		.modall-title {
+			font-family: "Bebas Neue", sans-serif;
+			font-style: regular;
+			font-size: 32px;
+			line-height: 29px;
+			line-height: 100%;
+
+			vertical-align: top;
+		}
+
+		.flat {
+			max-width: 433px;
+			width: 100%;
+		}
+
+		.flat-list {
+			padding: 0;
+
+			margin-top: 55px;
+
+		}
+
+		.flat-item {
+			margin-top: 5%;
+
+		}
+
+		.flat-link {
+			font-size: 16px;
+			line-height: 19px;
+			color: #635854;
+			text-decoration: none;
+		}
+
+		.flat-link:hover {
+			color: #3596F5;
+			text-decoration: underline;
+		}
+
+		.modall-alert {
+			font-style: italic;
+			font-weight: normal;
+			font-size: 16px;
+			line-height: 19px;
+			color: #635854;
+			margin-top: 10%;
+		}
+
+
+		.modal-close-button {
+			position: absolute;
+			right: 20px;
+			top: 20px;
+			cursor: pointer;
+			border: none;
+			background: transparent;
+
+		}
+
+		#footer {
+			display: block;
+			box-sizing: border-box;
+			margin-top: 10%;
+			left: 0;
+			bottom: 0;
+			padding: 40px 81px 46px 59px;
+			background: #D7D7D7;
+			border-top: solid 5px #3596F5;
+		}
+
+		.foot-img {
+			width: 65px;
+			height: 65px;
+
+		}
+
+		.footer-conts {
+			float: left;
+
+			color: #635854;
+			font-family: Roboto;
+			font-style: normal;
+			font-weight: normal;
+			font-size: 16px;
+			line-height: 19px;
+			text-align: center;
+
+		}
+
+		.footer-phone {
+			color: #635854;
+			margin-top: 5px;
+			font-weight: bold;
+		}
+
+		.social {
+			padding-left: 0 !important;
+			margin-top: 10px;
+			margin-left: 20px !important;
+
+		}
+
+		.social-items {
+			margin-right: 15%;
+		}
+
+
+
+		.foot-list {
+
+
+			padding-left: 0 !important;
+			margin-top: 25px;
+		}
+
+		.foot-items {
+			display: inline-block;
+			margin-left: 20px;
+		}
+
+		.foot-link {
+			color: #635854;
+			font-family: Roboto;
+			font-style: normal;
+			font-weight: normal;
+			font-size: 16px;
+			line-height: 19px;
+			text-align: center;
+		}
+
+
+		@media(max-width:768px) {
+			.modall-dialog {
+				flex-direction: column;
+				overflow: auto;
+				max-height: 90%;
+				margin: 5% 0%;
+			}
+
+			.modall-image,
+			.modall-info {
+				width: 100%;
+
+			}
+
+			.flat {
+				max-width: 250px;
+			}
+
+			.flat-list {
+				max-height: 100%;
+			}
+
+			.flat-link {
+				line-height: 10px;
+			}
+
+
+		}
+	</style>
+
+
+	<style>
+		/*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
+
+		/* Document
+			========================================================================== */
+
+		/**
+		 * 1. Correct the line height in all browsers.
+		 * 2. Prevent adjustments of font size after orientation changes in iOS.
+		 */
+
+		html {
+			line-height: 1.15;
+			/* 1 */
+			-webkit-text-size-adjust: 100%;
+			/* 2 */
+		}
+
+		/* Sections
+			========================================================================== */
+
+		/**
+		 * Remove the margin in all browsers.
+		 */
+
+		body {
+			margin: 0;
+		}
+
+		/**
+		 * Render the `main` element consistently in IE.
+		 */
+
+		main {
+			display: block;
+		}
+
+		/**
+		 * Correct the font size and margin on `h1` elements within `section` and
+		 * `article` contexts in Chrome, Firefox, and Safari.
+		 */
+
+		h1 {
+			font-size: 2em;
+			margin: 0.67em 0;
+		}
+
+		/* Grouping content
+			========================================================================== */
+
+		/**
+		 * 1. Add the correct box sizing in Firefox.
+		 * 2. Show the overflow in Edge and IE.
+		 */
+
+		hr {
+			box-sizing: content-box;
+			/* 1 */
+			height: 0;
+			/* 1 */
+			overflow: visible;
+			/* 2 */
+		}
+
+		/**
+		 * 1. Correct the inheritance and scaling of font size in all browsers.
+		 * 2. Correct the odd `em` font sizing in all browsers.
+		 */
+
+		pre {
+			font-family: monospace, monospace;
+			/* 1 */
+			font-size: 1em;
+			/* 2 */
+		}
+
+		/* Text-level semantics
+			========================================================================== */
+
+		/**
+		 * Remove the gray background on active links in IE 10.
+		 */
+
+		a {
+			background-color: transparent;
+		}
+
+		/**
+		 * 1. Remove the bottom border in Chrome 57-
+		 * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
+		 */
+
+		abbr[title] {
+			border-bottom: none;
+			/* 1 */
+			text-decoration: underline;
+			/* 2 */
+			text-decoration: underline dotted;
+			/* 2 */
+		}
+
+		/**
+		 * Add the correct font weight in Chrome, Edge, and Safari.
+		 */
+
+		b,
+		strong {
+			font-weight: bolder;
+		}
+
+		/**
+		 * 1. Correct the inheritance and scaling of font size in all browsers.
+		 * 2. Correct the odd `em` font sizing in all browsers.
+		 */
+
+		code,
+		kbd,
+		samp {
+			font-family: monospace, monospace;
+			/* 1 */
+			font-size: 1em;
+			/* 2 */
+		}
+
+		/**
+		 * Add the correct font size in all browsers.
+		 */
+
+		small {
+			font-size: 80%;
+		}
+
+		/**
+		 * Prevent `sub` and `sup` elements from affecting the line height in
+		 * all browsers.
+		 */
+
+		sub,
+		sup {
+			font-size: 75%;
+			line-height: 0;
+			position: relative;
+			vertical-align: baseline;
+		}
+
+		sub {
+			bottom: -0.25em;
+		}
+
+		sup {
+			top: -0.5em;
+		}
+
+		/* Embedded content
+			========================================================================== */
+
+		/**
+		 * Remove the border on images inside links in IE 10.
+		 */
+
+		img {
+			border-style: none;
+		}
+
+		/* Forms
+			========================================================================== */
+
+		/**
+		 * 1. Change the font styles in all browsers.
+		 * 2. Remove the margin in Firefox and Safari.
+		 */
+
+		button,
+		input,
+		optgroup,
+		select,
+		textarea {
+			font-family: inherit;
+			/* 1 */
+			font-size: 100%;
+			/* 1 */
+			line-height: 1.15;
+			/* 1 */
+			margin: 0;
+			/* 2 */
+		}
+
+		/**
+		 * Show the overflow in IE.
+		 * 1. Show the overflow in Edge.
+		 */
+
+		button,
+		input {
+			/* 1 */
+			overflow: visible;
+		}
+
+		/**
+		 * Remove the inheritance of text transform in Edge, Firefox, and IE.
+		 * 1. Remove the inheritance of text transform in Firefox.
+		 */
+
+		button,
+		select {
+			/* 1 */
+			text-transform: none;
+		}
+
+		/**
+		 * Correct the inability to style clickable types in iOS and Safari.
+		 */
+
+		button,
+		[type="button"],
+		[type="reset"],
+		[type="submit"] {
+			-webkit-appearance: button;
+		}
+
+		/**
+		 * Remove the inner border and padding in Firefox.
+		 */
+
+		button::-moz-focus-inner,
+		[type="button"]::-moz-focus-inner,
+		[type="reset"]::-moz-focus-inner,
+		[type="submit"]::-moz-focus-inner {
+			border-style: none;
+			padding: 0;
+		}
+
+		/**
+		 * Restore the focus styles unset by the previous rule.
+		 */
+
+		button:-moz-focusring,
+		[type="button"]:-moz-focusring,
+		[type="reset"]:-moz-focusring,
+		[type="submit"]:-moz-focusring {
+			outline: 1px dotted ButtonText;
+		}
+
+		/**
+		 * Correct the padding in Firefox.
+		 */
+
+		fieldset {
+			padding: 0.35em 0.75em 0.625em;
+		}
+
+		/**
+		 * 1. Correct the text wrapping in Edge and IE.
+		 * 2. Correct the color inheritance from `fieldset` elements in IE.
+		 * 3. Remove the padding so developers are not caught out when they zero out
+		 *    `fieldset` elements in all browsers.
+		 */
+
+		legend {
+			box-sizing: border-box;
+			/* 1 */
+			color: inherit;
+			/* 2 */
+			display: table;
+			/* 1 */
+			max-width: 100%;
+			/* 1 */
+			padding: 0;
+			/* 3 */
+			white-space: normal;
+			/* 1 */
+		}
+
+		/**
+		 * Add the correct vertical alignment in Chrome, Firefox, and Opera.
+		 */
+
+		progress {
+			vertical-align: baseline;
+		}
+
+		/**
+		 * Remove the default vertical scrollbar in IE 10+.
+		 */
+
+		textarea {
+			overflow: auto;
+		}
+
+		/**
+		 * 1. Add the correct box sizing in IE 10.
+		 * 2. Remove the padding in IE 10.
+		 */
+
+		[type="checkbox"],
+		[type="radio"] {
+			box-sizing: border-box;
+			/* 1 */
+			padding: 0;
+			/* 2 */
+		}
+
+		/**
+		 * Correct the cursor style of increment and decrement buttons in Chrome.
+		 */
+
+		[type="number"]::-webkit-inner-spin-button,
+		[type="number"]::-webkit-outer-spin-button {
+			height: auto;
+		}
+
+		/**
+		 * 1. Correct the odd appearance in Chrome and Safari.
+		 * 2. Correct the outline style in Safari.
+		 */
+
+		[type="search"] {
+			-webkit-appearance: textfield;
+			/* 1 */
+			outline-offset: -2px;
+			/* 2 */
+		}
+
+		/**
+		 * Remove the inner padding in Chrome and Safari on macOS.
+		 */
+
+		[type="search"]::-webkit-search-decoration {
+			-webkit-appearance: none;
+		}
+
+		/**
+		 * 1. Correct the inability to style clickable types in iOS and Safari.
+		 * 2. Change font properties to `inherit` in Safari.
+		 */
+
+		::-webkit-file-upload-button {
+			-webkit-appearance: button;
+			/* 1 */
+			font: inherit;
+			/* 2 */
+		}
+
+		/* Interactive
+			========================================================================== */
+
+		/*
+		 * Add the correct display in Edge, IE 10+, and Firefox.
+		 */
+
+		details {
+			display: block;
+		}
+
+		/*
+		 * Add the correct display in all browsers.
+		 */
+
+		summary {
+			display: list-item;
+		}
+
+		/* Misc
+			========================================================================== */
+
+		/**
+		 * Add the correct display in IE 10+.
+		 */
+
+		template {
+			display: none;
+		}
+
+		/**
+		 * Add the correct display in IE 10.
+		 */
+
+		[hidden] {
+			display: none;
+		}
+	</style>
+</head>
+
+<body id="body">
+
+	<!-- <header class="header">
+		<div class="navbar">
+			<a href="./Портфолио№2.html" class="logo">
+				<img src="img/logo.svg" alt="">
+			</a>
+			<nav class="navbar-nav">
+				<ul class="navbar-menu">
+					<li class="navbar-item">
+						<a href="#" class="navbar-link">Подобрать <br> квартиру</a>
+					</li>
+
+					<li class="navbar-item">
+						<a href="#" class="navbar-link">Забронировать <br> квартиру</a>
+					</li>
+
+					<li class="navbar-item">
+						<a href="#" class="navbar-link">Ход <br>строительства</a>
+					</li>
+
+					<li class="navbar-item">
+						<a href="#" class="navbar-link">Проектная <br>декларация</a>
+					</li>
+				</ul>
+			</nav>
+			<div class="navbar-contacts">
+				<span class="navbar-text">Заказать звонок:</span>
+				<a href="tel:+78431234567" class="navbar-phone">8 (843) 123-45-67</a>
+			</div>
+		</div>
+	</header> -->
+
+
+
+
+
+
+	<header class="header">
+		<nav class="navbar navbar-expand-lg ">
+			<div class="container-fluid">
+				<a href="./Портфолио№2.html" class="navbar-brand">
+					<img src="img/logo.svg" alt="">
+				</a>
+
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu"
+					aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon">
+						<svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" fill="currentColor"
+							class="bi bi-chevron-double-down" viewBox="0 0 16 16">
+							<path fill-rule="evenodd"
+								d="M1.646 6.646a.5.5 0 0 1 .708 0L8 12.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
+							<path fill-rule="evenodd"
+								d="M1.646 2.646a.5.5 0 0 1 .708 0L8 8.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
+						</svg>
+					</span>
+				</button>
+
+				<div class="collapse navbar-collapse text-center" id="navMenu">
+
+					<ul class="navbar-nav d-flex text-center mx-auto">
+						<li class="nav-item active mt-2 mt-lg-0 mx-3">
+							<a href="#" class="nav-link">Подобрать <br> квартиру</a>
+						</li>
+
+						<li class="nav-item mt-2 mt-lg-0 mx-3">
+							<a href="#" class="nav-link">Забронировать <br> квартиру</a>
+						</li>
+
+						<li class="nav-item mt-2 mt-lg-0 mx-3">
+							<a href="#" class="nav-link">Ход <br>строительства</a>
+						</li>
+
+						<li class="nav-item mt-2 mt-lg-0 mx-3">
+							<a href="#" class="nav-link">Проектная <br>декларация</a>
+						</li>
+					</ul>
+
+					<div class="navbar-contacts mt-2 mt-lg-0">
+						<span class="navbar-text">
+							<a href="#modalsign" data-bs-toggle="modal">
+								Заказать звонок:
+							</a>
+						</span>
+
+
+						<a href="tel:+78431234567" class="navbar-phone">8 (843) 123-45-67</a>
+					</div>
+				</div>
+
+			</div>
+		</nav>
+	</header>
+
+
+
+
+
+
+	<main class="main">
+		<div class="container-fluid text-center">
+			<div class="row">
+				<div class="col-12 mx-sm-auto mx-md-auto col-lg-6 main-image">
+					<svg class="home-image" viewBox="0 0 734 640" fill="none" xmlns="http://www.w3.org/2000/svg"
+						xmlns:xlink="http://www.w3.org/1999/xlink">
+						<rect width="734" height="640" fill="url(#pattern0)" />
+						<defs>
+							<pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1">
+								<use xlink:href="#image0" transform="translate(-0.00408719) scale(0.0013624 0.0015625)" />
+							</pattern>
+							<image id="image0" width="740" height="640" xlink:href="img/home.png" />
+						</defs>
+						<path id="18" class="floor f-18" d="M222 532L442.8 540L512 526.3V548L443.5 567.7L222 556.7V532Z"
+							fill="#3595F6" fill-opacity="0.75" />
+						<path id="17" class="floor f-17" d="M223 531V506L443.3 509.3L513 506V526L443.7 539L223 531Z"
+							fill="#3595F6" fill-opacity="0.75" />
+						<path id="16" class="floor f-16" d="M223 505V480H444H513V503L445 510L223 505Z" fill="#3595F6"
+							fill-opacity="0.75" />
+						<path id="15" class="floor f-15" d="M223 481V456L444.3 452.3L512 459V481H444" fill="#3595F6"
+							fill-opacity="0.75" />
+						<path id="14" class="floor f-14" d="M223 455V429L444.5 425.7L513 436.7V458L444 451.3L223 455Z"
+							fill="#3595F6" fill-opacity="0.75" />
+						<path id="13" class="floor f-13" d="M222 428V404.3L443 392L514 415V436.3L443 424L222 428Z"
+							fill="#3595F6" fill-opacity="0.75" />
+						<path id="12" class="floor f-12" d="M222 406V381L444.2 364.7L514 393.3V414L443.7 392.3L222 406Z"
+							fill="#3595F6" fill-opacity="0.75" />
+						<path id="11" class="floor f-11" d="M222 381V356L444.5 335.7L514 372.3V393L442 364.3L222 381Z"
+							fill="#3595F6" fill-opacity="0.75" />
+						<path id="10" class="floor f-10" d="M222 355V331L445 306.3L514 350.3V372L444.7 334L222 355Z"
+							fill="#3595F6" fill-opacity="0.75" />
+						<path id="9" class="floor f-9" d="M222 330V306L444.5 277.3L514 328.3V349L443.7 306.7L222 330Z"
+							fill="#3595F6" fill-opacity="0.75" />
+						<path id="8" class="floor f-8" d="M221 306V282L443.3 249L514 308.3V328L444 277.3L221 306Z"
+							fill="#3595F6" fill-opacity="0.75" />
+						<path id="7" class="floor f-7" d="M222 281V257L443.2 222L513 286V307L444.3 248.7L222 281Z"
+							fill="#3595F6" fill-opacity="0.75" />
+						<path id="6" class="floor f-6" d="M222 257V232L444.3 194L513 264.3V285L444 221L222 257Z"
+							fill="#3595F6" fill-opacity="0.75" />
+						<path id="5" class="floor f-5" d="M222 231V206L442.8 162.3L513 241.3V264L444 190.7L222 231Z"
+							fill="#3595F6" fill-opacity="0.75" />
+						<path id="4" class="floor f-4" d="M223 207V182L443 134L513 219V242L442.3 162.7L223 207Z"
+							fill="#3595F6" fill-opacity="0.75" />
+						<path id="3" class="floor f-3" d="M222 182V157L441.8 105L513 197.3V220L443.3 133.7L222 182Z"
+							fill="#3595F6" fill-opacity="0.75" />
+						<path id="2" class="floor " d="M222 157V131L444 74.3L513 176V197L443.7 105.3L222 157Z" fill="#3595F6"
+							fill-opacity="0.75" />
+
+					</svg>
+
+
+				</div>
+
+
+				<div class="col-12 col-lg-5 mt-5 mt-lg-0 main-info">
+					<h2 class="main-title">Выберете желаемый этаж</h2>
+					<div class="counter-group mt-3  mt-lg-0">
+						<button id="up" class="counter-button counter-up">
+							<img class="counter-arr arr-up" src="img/uparr.svg" alt="">
+						</button>
+						<span id="number" class="counter">02</span>
+						<button id="down" class="counter-button counter-down">
+
+							<img class="counter-arr arr-down" src="img/downarr.png" alt="">
+						</button>
+					</div>
+
+					<button type="button" class="btn btn-primary mt-5  mt-lg-0" id="modbut">Смотреть квартиры на
+						этаже</button>
+				</div>
+			</div>
+		</div>
+	</main>
+
+
+
+
+
+	<div id="modall" class="modall">
+
+		<div class="modall-dialog mx-5">
+			<button id="close" class="modal-close-button">
+				<svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path d="M2 2L26 26" stroke="#3596F5" stroke-width="3" />
+					<path d="M26 2L2 26" stroke="#3596F5" stroke-width="3" />
+				</svg>
+
+
+
+			</button>
+			<div class="modall-image text-center">
+				<h3 class="modall-title mt-5 ">
+					Этаж <span id="number-fl" class="modall-title">02</span>
+				</h3>
+				<svg class="mb-5 flat" viewBox="0 0 433 408" fill="none" xmlns="http://www.w3.org/2000/svg"
+					xmlns:xlink="http://www.w3.org/1999/xlink">
+
+					<image id="image0" xlink:href="img/Floor.png" />
+
+
+					<path class="flats" d="M46.5 86V120.5H125V149.5H164V136H184.5V37.5H93V21H28V86H46.5Z" fill="#3595F6"
+						fill-opacity="0.75" />
+
+
+					<path class="flats" d="M124.729 121H46V203H167V150.178H124.729V121Z" fill="#3595F6"
+						fill-opacity="0.75" />
+
+					<path class="flats" d="M119.5 278.5H46V203H167V255.822H119.5V278.5Z" fill="#3595F6"
+						fill-opacity="0.75" />
+
+					<path class="flats" d="M121 257H166.5V314H139.5V381H95V398H30V333.5H47V278.5H121V257Z" fill="#3595F6"
+						fill-opacity="0.75" />
+
+					<path class="flats" d="M217 399.5V269H187.5V278.5H167.5V315.5H140.5V380H175.5V399.5H217Z" fill="#3595F6"
+						fill-opacity="0.75" />
+
+					<path class="flats" d="M218 399.5V269H247.5V278.5H267.5V315.5H294.5V380H259.5V399.5H218Z" fill="#3595F6"
+						fill-opacity="0.75" />
+
+					<path class="flats" d="M314 258H268.5V314H295.5V381H340V398H405V333.5H388V273.5H314V258Z" fill="#3595F6"
+						fill-opacity="0.75" />
+
+					<path class="flats" d="M314.192 257.662H268V205H367.916V209.602H388V273H314.192V257.662Z" fill="#3595F6"
+						fill-opacity="0.75" />
+
+					<path class="flats" d="M314 153.5H268V205H367.5V210H387.5V146H314V153.5Z" fill="#3595F6"
+						fill-opacity="0.75" />
+
+					<path class="flats" d="M388 86V146H314V153H267.5V136H247V37.5H338.5V21H405V86H388Z" fill="#3595F6"
+						fill-opacity="0.75" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+				</svg>
+
+			</div>
+			<div class="modall-info text-center">
+				<h3 class="modall-title">Выберете квартиру</h3>
+
+				<ul id="modlist" class="flat-list ">
+					<li class="flat-item">
+						<a href="#" class="flat-link">кв. 40, 2 комн. 64,5 кв. м.</a>
+					</li>
+					<li class="flat-item">
+						<a href="#" class="flat-link">кв. 41, 1 комн. 38,9 кв. м.</a>
+					</li>
+					<li class="flat-item">
+						<a href="#" class="flat-link">кв. 42, 1 комн. 35,9 кв. м.</a>
+					</li>
+					<li class="flat-item">
+						<a href="#" class="flat-link">кв. 43, 2 комн. 56,0 кв. м.</a>
+					</li>
+					<li class="flat-item">
+						<a href="#" class="flat-link">кв. 44, 1 комн. 35,8 кв. м.</a>
+					</li>
+					<li class="flat-item">
+						<a href="#" class="flat-link">кв. 45, 1 комн. 35,8 кв. м.</a>
+					</li>
+					<li class="flat-item">
+						<a href="#" class="flat-link">кв. 46, 2 комн. 58,4 кв. м.</a>
+					</li>
+					<li class="flat-item">
+						<a href="#" class="flat-link">кв. 47, 1 комн. 32,3 кв. м.</a>
+					</li>
+					<li class="flat-item">
+						<a href="#" class="flat-link">кв. 48, 1 комн. 29,9 кв. м.</a>
+					</li>
+					<li class="flat-item">
+						<a href="#" class="flat-link">кв. 49, 2 комн. 75,2 кв. м.</a>
+					</li>
+				</ul>
+
+				<p class="modall-alert">Квартиры, отмеченные серым,<br>уже выкуплены.</p>
+			</div>
+		</div>
+	</div>
+
+
+
+	<!-- class="fixed-bottom" -->
+
+	<footer id="footer">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-12 col-lg-6 align-items-center  ">
+					<div class="container-fluid justify-content-center">
+						<div class="row justify-content-center">
+							<div
+								class="col-12 col-sm-4 col-lg-4   d-flex justify-content-center justify-content-lg-start align-items-center">
+								<img class="foot-img" src="img/footimg.png" alt="">
+							</div>
+							<div
+								class="col-12 col-sm-4 col-lg-4 d-flex justify-content-center justify-content-lg-start mt-xs-5   align-items-center">
+								<div class="navbar-contacts footer-conts mt-2 mt-lg-0">
+									<span class="navbar-text">Заказать звонок:</span>
+									<a href="tel:+78431234567" class="navbar-phone footer-phone">8 (843) 123-45-67</a>
+								</div>
+							</div>
+							<div
+								class="col-12 col-sm-4 col-lg-4 mt-xs-5  mt-lg-0  d-flex justify-content-center text-center justify-content-lg-start align-items-center">
+								<ul class="social d-flex justify-content-center">
+									<li class="social-items">
+										<a href="#" class="social-links">
+											<img src="img/facebook.png" alt="">
+										</a>
+									</li>
+									<li class="social-items">
+										<a href="#" class="social-links">
+											<img src="img/instagram.png" alt="">
+										</a>
+									</li>
+									<li class="social-items">
+										<a href="#" class="social-links">
+											<img src="img/twitter.png" alt="">
+										</a>
+									</li>
+									<li class="social-items">
+										<a href="#" class="social-links">
+											<img src="img/youtube.png" alt="">
+										</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+
+
+
+				</div>
+				<div class="col-12 col-lg-6 d-flex justify-content-center justify-content-lg-end  ">
+					<ul class="foot-list text-center ">
+						<li class="foot-items text-center mt-xs-5 mt-lg-0">
+							<a href="#" class="foot-link">Политика конфиденциальности</a>
+						</li>
+						<li class="foot-items text-center mt-xs-5 mt-lg-0">
+							<a href="#" class="foot-link">Публичная оферта</a>
+						</li>
+						<li class="foot-items text-center mt-xs-5 mt-lg-0">
+							<a href="#" class="foot-link">Контакты</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+
+
+
+
+	<div id="modalsign" class="modal fade" tabindex="-1" aria-labelledby="modalsignLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+
+				<div class="modal-header d-flex justify-content-center">
+					<h4 class="modal-title text-center">Sign in</h4>
+
+					<button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body text-center">
+					<form id="main-form">
+						<div class="mb-3">
+							<label for="email" class="form-label">Email</label>
+							<input name="email" type="email" class="form-control text-center" id="email"
+								placeholder="Ваш Email">
+							<div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+						</div>
+
+
+						<div class="mb-3">
+							<label for="password" class="form-label">Пароль</label>
+							<input name="password" type="password" class="form-control text-center" id="password"
+								placeholder="Ваш пароль">
+							<div id="passwordHelp" class="form-text">
+								Your password must be 8-20 characters long, contain letters and numbers, and must not contain
+								spaces, special characters, or emoji.
+							</div>
+						</div>
+					</form>
+				</div>
+
+				<div class="modal-footer d-flex justify-content-center">
+					<button id="hacksub" type="submit" class="btn btn-success">Sign in</button>
+					<button class="btn btn-danger" type="button" data-bs-dismiss="modal" aria-label="Close">Close</button>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+	<script src="Портфолио№2.js">let floors = document.getElementsByClassName("floor");//массив этажей
+
+
+		let num = document.getElementById("number");//счетчик этажей
+
+		let numfl = document.getElementById("number-fl");//счетчик этажей
+
+		document.getElementById("up").addEventListener("click", upfloor);//кнопка вверх
+
+		document.getElementById("down").addEventListener("click", downfloor);//кнопка вниз
+
+		let body = document.getElementById("body");
+
+		let flats = document.getElementsByClassName("flat-link");
+		let plans = document.getElementsByClassName("flats");
+
+
+
+
+
+
+
+		let modall = document.getElementById("modall");
+
+
+
+
+		let modbut = document.getElementById("modbut").addEventListener("click", function () {//вызывает модальное окно
+			modall.classList.toggle("is-open");
+			if (f < 10) {
+				numfl.innerHTML = "0" + f;
+			}
+			else {
+				numfl.innerHTML = f;
+			}
+			body.style.overflow = "hidden";
+		});
+
+
+		let closemod = document.getElementById("close").addEventListener("click", function () {//закрывает модальное окно
+			modall.classList.toggle("is-open");
+			body.style.overflow = "auto";
+		});
+
+
+
+
+
+
+		for (let i = 0; i < flats.length; ++i) {
+			flats[i].addEventListener("click", function (event) {
+
+				for (let j = 0; j < plans.length; ++j) {
+					plans[j].style.opacity = "0";
+				}
+
+
+				for (let j = 0; j < flats.length; ++j) {
+					flats[j].style.cssText = "color: #635854; font-weight:normal;";
+				}
+				plans[i].style.opacity = "1";
+				flats[i].style.cssText = "color: #3596F5; font-weight:600;";
+			});
+		}
+
+
+
+		for (let i = 0; i < plans.length; ++i) {
+			plans[i].addEventListener("click", function (event) {
+
+				for (let j = 0; j < plans.length; ++j) {
+					plans[j].style.opacity = "0";
+				}
+
+				for (let j = 0; j < flats.length; ++j) {
+					flats[j].style.cssText = "color: #635854; font-weight:normal;";
+				}
+				plans[i].style.opacity = "1";
+				flats[i].style.cssText = "color: #3596F5; font-weight:600;";
+			});
+		}
+
+
+
+		let flag = true;
+
+
+
+
+
+
+		let f = 2;
+		let c;
+		function upfloor(event) {//кнопка увеличения этажа
+
+			if (flag) {
+				floors[0].style.opacity = "1";
+				flag = false;
+				num.innerHTML = "02";
+			}
+
+
+
+			else {
+				f++;
+				if (f == (floors.length + 2)) {
+					for (let i = 0; i < floors.length; ++i) {
+						floors[i].style.opacity = "0";
+					}
+					f = 2;
+					floors[0].style.opacity = "1";
+					num.innerHTML = "02";
+				}
+				else {
+					for (let i = 0; i < floors.length; ++i) {
+						floors[i].style.opacity = "0";
+					}
+					floors[f - 2].style.opacity = "1";
+					if (f < 10) {
+						num.innerHTML = "0" + f;
+					}
+					else {
+						num.innerHTML = f;
+					}
+				}
+			}
+			return f;
+		}
+
+
+
+		function downfloor(event) {//кнопка уменьшения этажа
+
+			if (flag) {
+				floors[0].style.opacity = "1";
+				flag = false;
+				num.innerHTML = "02";
+			}
+
+
+
+			else {
+				f--;
+				if (f == 1) {
+					for (let i = 0; i < floors.length; ++i) {
+						floors[i].style.opacity = "0";
+					}
+					f = 18;
+					floors[floors.length - 1].style.opacity = "1";
+					num.innerHTML = "18";
+				}
+				else {
+					for (let i = 0; i < floors.length; ++i) {
+						floors[i].style.opacity = "0";
+					}
+					floors[f - 2].style.opacity = "1";
+					if (f < 10) {
+						num.innerHTML = "0" + f;
+					}
+					else {
+						num.innerHTML = f;
+					}
+				}
+			}
+			return f;
+		}
+
+
+
+
+		for (let i = 0; i < floors.length; ++i) {//при клике на этаж
+			let c = i;
+			floors[i].addEventListener("click", function () {
+				flag = false;
+				for (let j = 0; j < floors.length; ++j) {
+					floors[j].style.opacity = "0";
+				}
+				floors[c].style.opacity = "1";
+				f = c + 2;
+				if ((c + 2) < 10) {
+					num.innerHTML = "0" + (c + 2);
+
+				}
+				else {
+					num.innerHTML = (c + 2);
+				}
+
+
+
+
+			}, f, flag, floors, c);
+
+
+
+		}
+
+
+
+
+
+
+		// floors[floors.length-1].addEventListener("click",floorLight);
+
+		// function floorLight(event){
+		// 	floors[i].style.opacity="0.75";
+		// }
+
+
+
+
+
+		let form = document.getElementById("main-form");
+		let email = document.getElementById("emailHelp");
+		let pass = document.getElementById("passwordHelp");
+
+
+		document.getElementById("hacksub").addEventListener("click", function (event) {
+
+
+
+			if (form.email.value == "") {
+				email.innerHTML = "Заполните это поле!";
+				email.style.color = "red";
+			}
+
+
+			if (form.password.value == "") {
+				pass.innerHTML = "Заполните это поле!";
+				pass.style.color = "red";
+			}
+		});
+
+
+	</script>
+
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+		crossorigin="anonymous"></script>
+
+</body>
+
+</html>
